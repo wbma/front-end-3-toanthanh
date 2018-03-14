@@ -1,0 +1,24 @@
+<div>
+  <input type="text" [(ngModel)]="stopStationName">
+<button type="submit" (click)="getRoute()">Find</button>
+</div>
+<div *ngFor="let stop of stopArray">
+  <ul>
+    <li *ngFor="let pattern of stop.patterns">
+      <p>{{pattern.route.shortName}}</p>
+      <p>{{pattern.route.longName}}</p>
+      <p *ngIf="stop.patterns[0].directionId === 0">Depart</p>
+      <p *ngIf="stop.patterns[0].directionId === 1">Arrive</p>
+    </li>
+  </ul>
+</div>
+
+<ul>
+  <li *ngFor="let media of mediaArray">
+    <img [src]="mediaService.mediaUrl + media.thumbnail" [alt]="media.title">
+    <h4>{{media.title}}</h4>
+    <p>{{media.description}}</p>
+  </li>
+</ul>
+
+
